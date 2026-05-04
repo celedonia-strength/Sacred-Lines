@@ -485,7 +485,6 @@
       background: var(--surface);
       border-top: 1px solid var(--border);
       padding: 0.65rem 1rem;
-      flex-direction: row; align-items: stretch; gap: 0.5rem;
     }
     .mcta-btn {
       flex: 1; padding: 0.85rem 0.5rem;
@@ -522,7 +521,7 @@
       nav { padding: 0 1.25rem; }
 
       /* Mobile CTA bar */
-      .mobile-cta { display: flex; }
+      .mobile-cta { display: flex; flex-direction: row; align-items: stretch; gap: 0.5rem; }
       footer { padding-bottom: 8rem; }
 
       /* Hero */
@@ -542,6 +541,7 @@
       .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 1.8rem 1.25rem; }
 
       /* Artists — horizontal carousel */
+      .artist-photo { aspect-ratio: 16/9; }
       .artists-grid {
         display: flex;
         overflow-x: auto;
