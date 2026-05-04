@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacred Lines | Polynesian Tattoo Studio | Lacey, WA</title>
+  <meta name="description" content="Sacred Lines Polynesian Tattoo Studio — Born on the island, rooted in tradition. Hawaiian, Samoan, Chamorro, Filipino, Tongan, Fijian tattoo art in Lacey/Olympia, WA.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── Tokens ─── */
+    :root {
+      --black:    #080808;
+      --dark:     #111111;
+      --surface:  #1A1A1A;
+      --surface2: #242424;
+      --border:   #2E2E2E;
+      --border2:  #3A3A3A;
+      --white:    #F0F0F0;
+      --white-dim:#A0A0A0;
+      --text:     #EBEBEB;
+      --muted:    #717171;
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+      --nav-h:    68px;
+      --pad:      clamp(1.25rem, 5vw, 5rem);
+      --section:  clamp(3.5rem, 8vw, 8rem);
+    }
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Reveal animations ─── */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.10s; }
+    .d2 { transition-delay: 0.20s; }
+    .d3 { transition-delay: 0.30s; }
+    .d4 { transition-delay: 0.40s; }
+    .d5 { transition-delay: 0.50s; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 var(--pad);
+      transition: background 0.35s, border-color 0.35s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(8,8,8,0.94);
+      backdrop-filter: blur(18px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); line-height: 1;
+    }
+    .nav-logo span {
+      display: block;
+      font-family: var(--sans); font-size: 0.58rem;
+      font-weight: 400; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--muted);
+      margin-top: 3px;
+    }
+    .nav-links {
+      display: flex; gap: 2.5rem; list-style: none;
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .nav-links a { color: var(--muted); transition: color 0.2s; position: relative; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--white);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+    .nav-cta {
+      font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      border: 1px solid var(--border2); color: var(--text);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .nav-cta:hover { border-color: var(--white); color: var(--black); background: var(--white); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 8px;
+      margin-right: -8px;
+    }
+    .hamburger span {
+      width: 24px; height: 1.5px; background: var(--text); display: block;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 99;
+      background: rgba(8,8,8,0.98);
+      flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: 2.2rem; color: var(--text);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--white); }
+    .mobile-menu-cta {
+      margin-top: 1rem;
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.9rem 2.8rem;
+      background: var(--white); color: var(--black); font-weight: 600;
+    }
+
+    /* ─── Buttons ─── */
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.95rem 2rem;
+      background: var(--white); color: var(--black);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary svg { width: 13px; height: 13px; flex-shrink: 0; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      padding: 0.95rem 2rem;
+      border: 1px solid var(--border2); color: var(--muted);
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--white-dim); color: var(--text); }
+    .btn-ghost svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ─── Section shared ─── */
+    section { padding: var(--section) var(--pad); }
+    .eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--white-dim); margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.9rem;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block;
+      width: 1.8rem; height: 1px; background: var(--border2);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 300; line-height: 1.1; margin-bottom: 1rem;
+      text-align: center;
+    }
+    .section-title em { font-style: italic; color: var(--white); }
+    .section-lead {
+      font-size: 1rem; color: var(--muted); max-width: 520px;
+      line-height: 1.8; margin-bottom: 3rem;
+      text-align: center; margin-left: auto; margin-right: auto;
+    }
+
+    /* Visit keeps left-aligned headers */
+    #visit .eyebrow { justify-content: flex-start; }
+    #visit .section-title { text-align: left; }
+    #visit .section-lead { text-align: left; margin-left: 0; margin-right: 0; }
+
+    /* ─── Hero ─── */
+    #hero {
+      position: relative; min-height: 100svh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--black); overflow: hidden;
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: calc(var(--nav-h) + 2rem) var(--pad) 5rem;
+      max-width: 860px; width: 100%;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1.8rem;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 7.5vw, 6.5rem);
+      font-weight: 300; line-height: 1.04;
+      letter-spacing: -0.01em; margin-bottom: 1.6rem;
+    }
+    .hero-title em { font-style: italic; color: var(--white); }
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      font-weight: 300; color: var(--muted);
+      max-width: 440px; margin: 0 auto 2.4rem; line-height: 1.8;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+    }
+
+    /* ─── Stats ─── */
+    .stats-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem var(--pad);
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); margin-top: 0.35rem;
+    }
+
+    /* ─── Artists ─── */
+    #artists { background: var(--black); }
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .artist-card {
+      background: var(--surface); overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .artist-card:hover { transform: translateY(-3px); }
+    .artist-photo {
+      aspect-ratio: 3/4; position: relative; overflow: hidden;
+      background: var(--dark);
+    }
+    .artist-photo svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .artist-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,8,0.7) 0%, transparent 55%);
+    }
+    .artist-info { padding: 1.4rem 1.3rem 1.8rem; border-top: 1px solid var(--border); }
+    .artist-role {
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .artist-name {
+      font-family: var(--serif); font-size: 1.8rem; font-weight: 400;
+      color: var(--text); margin-bottom: 0.8rem; line-height: 1.1;
+    }
+    .artist-bio {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.72; margin-bottom: 1.1rem;
+    }
+    .artist-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+    .artist-tag {
+      font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border: 1px solid var(--border); color: var(--muted);
+    }
+    .artist-ig {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.7rem; color: var(--white-dim); transition: color 0.2s;
+    }
+    .artist-ig:hover { color: var(--white); }
+    .artist-ig svg { width: 13px; height: 13px; }
+
+    /* ─── Gallery ─── */
+    #gallery { background: var(--dark); padding-left: 0; padding-right: 0; }
+    .gallery-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+      padding: 0 var(--pad); margin-bottom: 2rem;
+    }
+    .gallery-header-text { flex: 1; min-width: 0; }
+    .gallery-nav { display: flex; gap: 0.5rem; flex-shrink: 0; align-self: flex-end; }
+    .gallery-nav-btn {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border2); background: none;
+      color: var(--muted); cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .gallery-nav-btn:hover { border-color: var(--white-dim); color: var(--white); }
+    .gallery-nav-btn svg { width: 16px; height: 16px; }
+    .gallery-grid {
+      display: flex; gap: 10px;
+      padding: 0 var(--pad);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      touch-action: pan-x;
+    }
+    .gallery-grid::-webkit-scrollbar { display: none; }
+    .gallery-item {
+      flex: 0 0 auto;
+      width: clamp(220px, 28vw, 360px);
+      aspect-ratio: 3/4;
+      scroll-snap-align: start;
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%; display: block; object-fit: cover;
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gallery-item:hover img { transform: scale(1.03); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: rgba(8,8,8,0.25);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+
+    /* ─── Styles ─── */
+    #styles { background: var(--black); }
+    .styles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .style-card {
+      padding: 2rem 1.6rem;
+      background: var(--surface);
+      position: relative; overflow: hidden;
+      transition: background 0.25s;
+    }
+    .style-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: var(--white);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .style-card:hover { background: var(--surface2); }
+    .style-card:hover::after { transform: scaleX(1); }
+    .style-num {
+      font-family: var(--serif); font-size: 1.8rem; font-weight: 300;
+      color: var(--border2); line-height: 1; margin-bottom: 1rem;
+    }
+    .style-name {
+      font-family: var(--serif); font-size: 1.3rem;
+      color: var(--text); margin-bottom: 0.5rem;
+    }
+    .style-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── Visit ─── */
+    #visit {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+    .info-block { margin-bottom: 2rem; }
+    .info-label {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .info-value {
+      font-family: var(--serif); font-size: 1.15rem; color: var(--text); line-height: 1.5;
+    }
+    .info-value a { color: var(--white); }
+    .visit-callout {
+      background: var(--black);
+      border-left: 2px solid var(--border2);
+      padding: 1.4rem 1.6rem; margin-top: 1.6rem;
+    }
+    .visit-callout-title {
+      font-family: var(--serif); font-size: 1.1rem;
+      color: var(--text); margin-bottom: 0.5rem;
+    }
+    .visit-callout p { font-size: 0.85rem; color: var(--muted); line-height: 1.72; }
+    .visit-right { position: sticky; top: calc(var(--nav-h) + 2rem); }
+    .airport-card {
+      background: var(--black); border: 1px solid var(--border);
+      padding: 1.4rem; margin-bottom: 2px;
+    }
+    .airport-name {
+      font-family: var(--serif); font-size: 1.1rem; color: var(--text); margin-bottom: 0.25rem;
+    }
+    .airport-detail { font-size: 0.8rem; color: var(--muted); }
+    .airport-rec {
+      font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--white-dim); margin-top: 0.45rem;
+    }
+    .map-box {
+      margin-top: 1.5rem;
+      background: var(--black); border: 1px solid var(--border);
+      padding: 1.8rem; text-align: center;
+    }
+    .map-box svg { width: 26px; height: 26px; margin: 0 auto 0.7rem; color: var(--muted); }
+    .map-box p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .map-box a {
+      display: inline-block; margin-top: 0.8rem;
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--white-dim); border-bottom: 1px solid var(--border2);
+      padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+    }
+    .map-box a:hover { color: var(--white); border-color: var(--white-dim); }
+    .visit-cta-stack { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .visit-cta-stack .btn-primary,
+    .visit-cta-stack .btn-ghost { justify-content: center; }
+
+    /* ─── Testimonials ─── */
+    #testimonials { background: var(--black); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .testimonial-card { background: var(--surface); padding: 2rem 1.8rem; }
+    .t-stars {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      color: var(--white-dim); margin-bottom: 1rem;
+    }
+    .t-text {
+      font-size: 0.9rem; font-style: italic;
+      color: var(--text); line-height: 1.8; margin-bottom: 1.4rem;
+    }
+    .t-author {
+      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--white);
+    }
+    .t-origin { font-size: 0.68rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 4rem var(--pad) 6rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 4rem;
+    }
+    .footer-logo {
+      font-family: var(--serif); font-size: 1.4rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 0.4rem;
+    }
+    .footer-tagline {
+      font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em;
+      font-style: italic; font-family: var(--serif); margin-bottom: 1.4rem;
+    }
+    .footer-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.72; }
+    .footer-col-title {
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--white-dim); margin-bottom: 1.1rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-links a, .footer-links li { font-size: 0.82rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.72rem; color: var(--muted); }
+
+    /* ─── Mobile sticky CTA ─── */
+    .mobile-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 0.65rem 1rem; gap: 0.5rem;
+    }
+    .mcta-btn {
+      flex: 1; padding: 0.85rem 0.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.45rem;
+      font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mcta-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .mcta-book { background: var(--white); color: var(--black); }
+    .mcta-call { border: 1px solid var(--border2); color: var(--text); }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); }
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+       All mobile overrides live here, after
+       base styles, so the cascade is correct.
+    ═══════════════════════════════════════ */
+
+    /* Tablet — ≤ 900px */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .styles-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Mobile — ≤ 768px */
+    @media (max-width: 768px) {
+      /* Nav */
+      nav { padding: 0 1.25rem; }
+
+      /* Mobile CTA bar */
+      .mobile-cta { display: flex; }
+      footer { padding-bottom: 8rem; }
+
+      /* Hero */
+      .hero-content {
+        display: flex; flex-direction: column; justify-content: space-between;
+        min-height: 100svh;
+        padding: calc(var(--nav-h) + 3rem) 1.5rem 7rem;
+      }
+      .hero-eyebrow { margin-bottom: 0; }
+      .hero-title { font-size: clamp(3.2rem, 12vw, 5rem); margin-bottom: 0; }
+      .hero-sub { font-size: 1rem; max-width: 100%; margin: 0; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn-primary,
+      .hero-actions .btn-ghost { width: 100%; padding: 1.15rem 2rem; }
+
+      /* Stats — 2×2 on mobile */
+      .stats-strip { grid-template-columns: repeat(2, 1fr); padding: 1.8rem 1.25rem; }
+
+      /* Artists — horizontal carousel */
+      .artists-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        gap: 10px;
+      }
+      .artists-grid::-webkit-scrollbar { display: none; }
+      .artist-card {
+        flex: 0 0 auto;
+        width: 85vw;
+        scroll-snap-align: start;
+      }
+
+      /* Gallery */
+      .gallery-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .gallery-nav { display: none; }
+      .gallery-item { width: 82vw; }
+
+      /* Styles — horizontal carousel */
+      .styles-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        border: none; gap: 10px;
+      }
+      .styles-grid::-webkit-scrollbar { display: none; }
+      .style-card {
+        flex: 0 0 auto;
+        width: 78vw;
+        scroll-snap-align: start;
+        border: 1px solid var(--border);
+      }
+
+      /* Testimonials — horizontal carousel */
+      .testimonials-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        border: none; gap: 10px;
+      }
+      .testimonials-grid::-webkit-scrollbar { display: none; }
+      .testimonial-card {
+        flex: 0 0 auto;
+        width: 85vw;
+        scroll-snap-align: start;
+        border: 1px solid var(--border);
+      }
+
+      /* Visit */
+      .visit-grid { grid-template-columns: 1fr; }
+      .visit-right { position: static; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+
+    /* Small phones — ≤ 480px */
+    @media (max-width: 480px) {
+      .stats-strip { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .gallery-item { width: 88vw; }
+      .style-card { width: 86vw; }
+      .testimonial-card { width: 90vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="#hero" class="nav-logo">
+      Sacred Lines
+      <span>Polynesian Tattoo Studio</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#styles">Styles</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+    </ul>
+    <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="nav-cta">Book Consultation</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#artists" class="mlink">Artists</a>
+    <a href="#gallery" class="mlink">Gallery</a>
+    <a href="#styles" class="mlink">Styles</a>
+    <a href="#visit" class="mlink">Plan Your Visit</a>
+    <a href="#testimonials" class="mlink">Reviews</a>
+    <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" class="mobile-menu-cta">Book a Free Consultation</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal">Lacey, WA — Est. in the Spirit of Aloha</div>
+      <h1 class="hero-title reveal d1">
+        Born on the Island.<br>
+        <em>Rooted in Tradition.</em>
+      </h1>
+      <p class="hero-sub reveal d2">
+        Pacific Island tattoo artistry, practiced with intention and cultural reverence.
+        Where the islands meet the Pacific Northwest.
+      </p>
+      <div class="hero-actions reveal d3">
+        <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          Book a Free Consultation
+        </a>
+        <a href="tel:8086733513" class="btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          (808) 673-3513
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-strip">
+    <div class="stat reveal"><div class="stat-num">4</div><div class="stat-label">Master Artists</div></div>
+    <div class="stat reveal d1"><div class="stat-num">8+</div><div class="stat-label">Cultural Traditions</div></div>
+    <div class="stat reveal d2"><div class="stat-num">14+</div><div class="stat-label">Years Experience</div></div>
+    <div class="stat reveal d3"><div class="stat-num">Free</div><div class="stat-label">Consultations</div></div>
+  </div>
+
+  <!-- ARTISTS -->
+  <section id="artists">
+    <div class="eyebrow reveal">Our Artists</div>
+    <h2 class="section-title reveal d1">The Hands <em>Behind the Lines</em></h2>
+    <p class="section-lead reveal d2">Each artist carries a distinct lineage — of islands, of ink, of cultural memory. Every piece begins with a conversation about who you are and where you come from.</p>
+
+    <div class="artists-grid">
+
+      <!-- Driffin -->
+      <div class="artist-card reveal">
+        <div class="artist-photo">
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#111111"/>
+            <g opacity="0.12">
+              <polygon points="150,40 205,110 150,180 95,110" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <polygon points="150,80 190,135 150,190 110,135" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="50" y1="210" x2="250" y2="210" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="50" y1="228" x2="250" y2="228" stroke="#F0F0F0" stroke-width="0.5"/>
+              <line x1="50" y1="246" x2="250" y2="246" stroke="#F0F0F0" stroke-width="1"/>
+              <rect x="44" y="268" width="28" height="28" fill="#F0F0F0" opacity="0.4"/>
+              <rect x="82" y="268" width="28" height="28" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <rect x="120" y="268" width="28" height="28" fill="#F0F0F0" opacity="0.4"/>
+              <rect x="158" y="268" width="28" height="28" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <rect x="196" y="268" width="28" height="28" fill="#F0F0F0" opacity="0.4"/>
+              <path d="M44,316 Q150,288 256,316" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <path d="M44,336 Q150,308 256,336" fill="none" stroke="#F0F0F0" stroke-width="0.8"/>
+              <path d="M44,356 Q150,328 256,356" fill="none" stroke="#F0F0F0" stroke-width="0.4"/>
+            </g>
+          </svg>
+          <div class="artist-photo-overlay"></div>
+        </div>
+        <div class="artist-info">
+          <div class="artist-role">Owner &amp; Founder</div>
+          <div class="artist-name">Driffin</div>
+          <p class="artist-bio">Born and raised on O'ahu, Driffin carries the living lineage of traditional Polynesian tattooing. His work speaks the visual language of his ancestors — precise, intentional, and deeply rooted in Pacific Island identity. Every line is a conversation across generations.</p>
+          <div class="artist-tags">
+            <span class="artist-tag">Hawaiian</span>
+            <span class="artist-tag">Samoan</span>
+            <span class="artist-tag">Traditional Polynesian</span>
+          </div>
+          <a href="https://www.instagram.com/oyabun_75/" target="_blank" rel="noopener" class="artist-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            @oyabun_75
+          </a>
+        </div>
+      </div>
+
+      <!-- Ryan -->
+      <div class="artist-card reveal d1">
+        <div class="artist-photo">
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#111111"/>
+            <g opacity="0.12">
+              <circle cx="150" cy="100" r="55" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <circle cx="150" cy="100" r="38" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <circle cx="150" cy="100" r="18" fill="#F0F0F0" opacity="0.25"/>
+              <line x1="95" y1="100" x2="205" y2="100" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="150" y1="45" x2="150" y2="155" stroke="#F0F0F0" stroke-width="1"/>
+              <path d="M55,195 L110,158 L150,195 L190,158 L245,195" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <path d="M55,225 L110,188 L150,225 L190,188 L245,225" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <path d="M55,255 L110,218 L150,255 L190,218 L245,255" fill="none" stroke="#F0F0F0" stroke-width="0.5"/>
+              <rect x="85" y="285" width="130" height="2" fill="#F0F0F0" opacity="0.5"/>
+              <rect x="105" y="305" width="90" height="1" fill="#F0F0F0" opacity="0.35"/>
+            </g>
+          </svg>
+          <div class="artist-photo-overlay"></div>
+        </div>
+        <div class="artist-info">
+          <div class="artist-role">Artist</div>
+          <div class="artist-name">Ryan</div>
+          <p class="artist-bio">Island-born and continuously evolving, Ryan brings fluid versatility to Sacred Lines. Deeply grounded in traditional Polynesian forms, his work expands across multiple styles — blending island heritage with contemporary technique to create pieces that are both timeless and modern.</p>
+          <div class="artist-tags">
+            <span class="artist-tag">Polynesian</span>
+            <span class="artist-tag">Multi-Style</span>
+            <span class="artist-tag">Contemporary</span>
+          </div>
+          <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="artist-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            @sacred_lines_empirellc
+          </a>
+        </div>
+      </div>
+
+      <!-- Clay -->
+      <div class="artist-card reveal d2">
+        <div class="artist-photo">
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#111111"/>
+            <g opacity="0.12">
+              <path d="M80,55 L150,35 L220,55 L242,128 L220,202 L150,222 L80,202 L58,128 Z" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <path d="M100,78 L150,62 L200,78 L218,128 L200,178 L150,194 L100,178 L82,128 Z" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="80" y1="128" x2="220" y2="128" stroke="#F0F0F0" stroke-width="0.8"/>
+              <line x1="150" y1="35" x2="150" y2="222" stroke="#F0F0F0" stroke-width="0.8"/>
+              <polygon points="150,245 182,275 168,310 132,310 118,275" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <line x1="60" y1="335" x2="240" y2="335" stroke="#F0F0F0" stroke-width="1"/>
+              <line x1="60" y1="350" x2="240" y2="350" stroke="#F0F0F0" stroke-width="0.5"/>
+              <line x1="60" y1="365" x2="240" y2="365" stroke="#F0F0F0" stroke-width="0.25"/>
+            </g>
+          </svg>
+          <div class="artist-photo-overlay"></div>
+        </div>
+        <div class="artist-info">
+          <div class="artist-role">Artist</div>
+          <div class="artist-name">Clay</div>
+          <p class="artist-bio">PNW-born and trained in the illustrative tradition, Clay specializes in black and grey work with real depth and shadow. His Norse and Celtic tribal expertise brings a northern European dimension to Sacred Lines — proof that the spirit of sacred marking transcends any one geography.</p>
+          <div class="artist-tags">
+            <span class="artist-tag">Black &amp; Grey</span>
+            <span class="artist-tag">Norse &amp; Celtic</span>
+            <span class="artist-tag">Illustrative</span>
+          </div>
+          <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="artist-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            @sacred_lines_empirellc
+          </a>
+        </div>
+      </div>
+
+      <!-- Jaime -->
+      <div class="artist-card reveal d3">
+        <div class="artist-photo">
+          <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="400" fill="#111111"/>
+            <g opacity="0.12">
+              <path d="M150,38 C182,78 202,120 150,162 C98,120 118,78 150,38Z" fill="#F0F0F0" opacity="0.2"/>
+              <path d="M98,78 C76,120 88,162 150,182 C212,162 224,120 202,78" fill="none" stroke="#F0F0F0" stroke-width="1.5"/>
+              <circle cx="150" cy="102" r="8" fill="#F0F0F0" opacity="0.4"/>
+              <line x1="150" y1="110" x2="150" y2="380" stroke="#F0F0F0" stroke-width="0.8" stroke-dasharray="3,6"/>
+              <path d="M88,202 C110,182 140,196 150,212 C160,196 190,182 212,202" fill="none" stroke="#F0F0F0" stroke-width="1"/>
+              <path d="M78,242 C108,218 140,236 150,252 C160,236 192,218 222,242" fill="none" stroke="#F0F0F0" stroke-width="0.8"/>
+              <path d="M88,282 C115,260 140,274 150,288 C160,274 185,260 212,282" fill="none" stroke="#F0F0F0" stroke-width="0.5"/>
+            </g>
+          </svg>
+          <div class="artist-photo-overlay"></div>
+        </div>
+        <div class="artist-info">
+          <div class="artist-role">Senior Artist — 14 Years</div>
+          <div class="artist-name">Jaime</div>
+          <p class="artist-bio">With fourteen years behind the needle, Jaime brings a lifetime of refinement to every piece. Her illustrative approach creates tattoos that feel like living art — detailed, dimensional, and deeply personal. She's the kind of artist you wait for, because the work is worth waiting for.</p>
+          <div class="artist-tags">
+            <span class="artist-tag">Illustrative</span>
+            <span class="artist-tag">Fine Detail</span>
+            <span class="artist-tag">Cover-Ups</span>
+          </div>
+          <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="artist-ig">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            @sacred_lines_empirellc
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header">
+      <div class="gallery-header-text">
+        <div class="eyebrow reveal" style="justify-content:flex-start">Portfolio</div>
+        <h2 class="section-title reveal d1" style="text-align:left">The <em>Work Speaks</em></h2>
+        <p class="section-lead reveal d2" style="text-align:left;margin-left:0;margin-right:0;margin-bottom:0">Every piece in our gallery began with a story. These are some of ours.</p>
+      </div>
+      <div class="gallery-nav">
+        <button class="gallery-nav-btn" id="gallery-prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="gallery-nav-btn" id="gallery-next" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="./brand_assets/SL1.jpg"  alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL2.jpeg" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL3.jpeg" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL4.jpg"  alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL5.jpg"  alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL6.jpg"  alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL7.jpg"  alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL8.jpeg" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL9.jpeg" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL10.png" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL11.png" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL12.png" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+      <div class="gallery-item"><img src="./brand_assets/SL13.png" alt="Sacred Lines tattoo work" loading="lazy"><div class="gallery-item-overlay"></div></div>
+    </div>
+  </section>
+
+  <!-- STYLES -->
+  <section id="styles">
+    <div class="eyebrow reveal">What We Do</div>
+    <h2 class="section-title reveal d1">Styles We <em>Specialize In</em></h2>
+    <p class="section-lead reveal d2">These aren't just aesthetics. They are living traditions, each with its own history, symbolism, and weight. We approach every one with deep respect.</p>
+
+    <div class="styles-grid">
+      <div class="style-card reveal">
+        <div class="style-num">01</div>
+        <div class="style-name">Hawaiian</div>
+        <p class="style-desc">Kakau — the ancient practice of tattooing native to Hawai'i. Geometric bands and natural forms carrying mana, identity, and connection to 'āina.</p>
+      </div>
+      <div class="style-card reveal d1">
+        <div class="style-num">02</div>
+        <div class="style-name">Samoan</div>
+        <p class="style-desc">Pe'a and malu — among the oldest continuous tattooing traditions on Earth. Dense, precise, and spiritually transformative designs rooted in fa'asamoa.</p>
+      </div>
+      <div class="style-card reveal d2">
+        <div class="style-num">03</div>
+        <div class="style-name">Chamorro</div>
+        <p class="style-desc">The tattooing tradition of the indigenous Chamorro people of Guam and the Mariana Islands — geometric, bold, and an act of cultural reclamation.</p>
+      </div>
+      <div class="style-card reveal d3">
+        <div class="style-num">04</div>
+        <div class="style-name">Filipino</div>
+        <p class="style-desc">Batok — the ancient Filipino tattoo tradition practiced by the Kalinga, Ifugao, and others. Warrior marks of courage and cultural memory.</p>
+      </div>
+      <div class="style-card reveal">
+        <div class="style-num">05</div>
+        <div class="style-name">Tongan</div>
+        <p class="style-desc">Tatatau in the Tongan tradition — powerful geometric works that denote rank, lineage, and spiritual connection to the islands of the Pacific.</p>
+      </div>
+      <div class="style-card reveal d1">
+        <div class="style-num">06</div>
+        <div class="style-name">Fijian</div>
+        <p class="style-desc">Traditional Fijian tattooing — bold, structured patterns that mark identity, social standing, and connection to the Viti island chain.</p>
+      </div>
+      <div class="style-card reveal d2">
+        <div class="style-num">07</div>
+        <div class="style-name">Norse &amp; Celtic</div>
+        <p class="style-desc">Knotwork, runes, and bold tribal forms from the northern European tradition — carried with the same reverence as Pacific Island styles.</p>
+      </div>
+      <div class="style-card reveal d3">
+        <div class="style-num">08</div>
+        <div class="style-name">Cover-Ups</div>
+        <p class="style-desc">Transforming regret into art. Our artists specialize in cover-up work that doesn't just hide — it creates something worth wearing for life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="visit-grid">
+      <div>
+        <div class="eyebrow reveal">Plan Your Visit</div>
+        <h2 class="section-title reveal d1">Flying In?<br><em>We'll Make It Worth It.</em></h2>
+        <p class="section-lead reveal d2">Clients come to Sacred Lines from across the country and from the islands. Here's everything you need to plan a trip built around great work.</p>
+
+        <div class="info-block reveal">
+          <div class="info-label">Studio Address</div>
+          <div class="info-value">5718 Pacific Ave SE, Unit A<br>Lacey, WA 98503</div>
+        </div>
+        <div class="info-block reveal d1">
+          <div class="info-label">Hours</div>
+          <div class="info-value">Monday – Sunday &nbsp; 1PM – 9PM</div>
+        </div>
+        <div class="info-block reveal d2">
+          <div class="info-label">Phone</div>
+          <div class="info-value"><a href="tel:8086733513">(808) 673-3513</a></div>
+        </div>
+
+        <div class="visit-callout reveal d3">
+          <div class="visit-callout-title">Book Before You Book Your Flight</div>
+          <p>Our artists fill up quickly, especially for larger traditional pieces requiring multiple sessions. Reach out via Instagram DM or phone to lock in your consultation before you purchase airfare. We'll help you plan a visit that makes the most of your time here.</p>
+        </div>
+      </div>
+
+      <div class="visit-right">
+        <div class="eyebrow reveal" style="margin-bottom:1.4rem">Getting Here</div>
+
+        <div class="airport-card reveal">
+          <div class="airport-name">Sea-Tac International</div>
+          <div class="airport-detail">Seattle-Tacoma International (SEA)</div>
+          <div class="airport-detail">~60 miles north — approx. 60–75 min by car</div>
+          <div class="airport-rec">Major hub · Direct flights from most US cities</div>
+        </div>
+        <div class="airport-card reveal d1">
+          <div class="airport-name">Olympia Regional Airport</div>
+          <div class="airport-detail">Olympia Regional (OLM)</div>
+          <div class="airport-detail">~15 miles — approx. 20 min to studio</div>
+          <div class="airport-rec">Recommended for West Coast travelers</div>
+        </div>
+
+        <div class="map-box reveal d2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <p>5718 Pacific Ave SE, Unit A<br>Lacey, WA 98503</p>
+          <a href="https://maps.google.com/?q=5718+Pacific+Ave+SE+Unit+A+Lacey+WA+98503" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </div>
+
+        <div class="visit-cta-stack reveal d3">
+          <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="btn-primary">Book via Instagram DM</a>
+          <a href="tel:8086733513" class="btn-ghost">Call (808) 673-3513</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="eyebrow reveal">Client Stories</div>
+    <h2 class="section-title reveal d1">Words From <em>Those Who Know</em></h2>
+    <p class="section-lead reveal d2">The best measure of this work isn't what we say. It's what it means to the people who wear it.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"I flew in from Honolulu specifically for Driffin. He understood exactly what I wanted — a piece that connected my Hawaiian heritage with my life on the mainland. The consultation alone felt like a cultural ceremony. The tattoo is everything."</p>
+        <div class="t-author">Kaimana L.</div>
+        <div class="t-origin">Honolulu, HI — flew in for session</div>
+      </div>
+      <div class="testimonial-card reveal d1">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"I'd been wanting a traditional Samoan piece for years but never trusted anyone enough. Sacred Lines was worth the wait. Driffin's knowledge is encyclopedic — he explained every element and why. It's not just a tattoo. It's a story."</p>
+        <div class="t-author">Faleolo T.</div>
+        <div class="t-origin">Portland, OR</div>
+      </div>
+      <div class="testimonial-card reveal d2">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"Jaime turned a poorly done old piece into the most beautiful tattoo I've ever seen. She didn't just cover it — she transformed it into something I'm proud to show off. 14 years of experience shows in every single line."</p>
+        <div class="t-author">Michelle R.</div>
+        <div class="t-origin">Tacoma, WA</div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"Clay did a full Norse sleeve for me and I can't stop getting compliments. He took my family's heritage seriously, researched the symbols, and created something authentic and deeply personal. The studio vibe is exactly right — focused, respectful."</p>
+        <div class="t-author">Erik V.</div>
+        <div class="t-origin">Lacey, WA</div>
+      </div>
+      <div class="testimonial-card reveal d1">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"Booked a flight from San Jose for my Chamorro half-sleeve. The Instagram consultation took less than a day. Driffin already had a custom design ready when I arrived. I cried when I saw it. Worth every mile."</p>
+        <div class="t-author">Diana C.</div>
+        <div class="t-origin">San Jose, CA — flew to Sea-Tac</div>
+      </div>
+      <div class="testimonial-card reveal d2">
+        <div class="t-stars">★ ★ ★ ★ ★</div>
+        <p class="t-text">"Ryan blended my Filipino tribal heritage with contemporary black work flawlessly. The studio treats every client like family. You feel the aloha the moment you walk in."</p>
+        <div class="t-author">Paolo M.</div>
+        <div class="t-origin">Seattle, WA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Sacred Lines</div>
+        <div class="footer-tagline">Born on the Island. Rooted in Tradition.</div>
+        <p class="footer-desc">Polynesian tattoo artistry practiced with cultural reverence in Lacey, Washington. Hawaiian, Samoan, Chamorro, Filipino, Tongan, Fijian — and every tradition in between. Open seven days a week. Free consultations always.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#artists">Our Artists</a></li>
+          <li><a href="#gallery">Portfolio Gallery</a></li>
+          <li><a href="#styles">Styles We Specialize In</a></li>
+          <li><a href="#visit">Plan Your Visit</a></li>
+          <li><a href="#testimonials">Client Stories</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:8086733513">(808) 673-3513</a></li>
+          <li>5718 Pacific Ave SE, Unit A<br>Lacey, WA 98503</li>
+          <li style="margin-top:0.3rem;">Mon – Sun &nbsp; 1PM – 9PM</li>
+          <li style="margin-top:0.8rem;"><a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener">@sacred_lines_empirellc</a></li>
+          <li><a href="https://www.instagram.com/oyabun_75/" target="_blank" rel="noopener">@oyabun_75</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sacred Lines Polynesian Tattoo Studio. All rights reserved.</p>
+      <p>Lacey, WA — Open 7 Days</p>
+    </div>
+  </footer>
+
+  <!-- MOBILE CTA -->
+  <div class="mobile-cta">
+    <a href="https://www.instagram.com/sacred_lines_empirellc/" target="_blank" rel="noopener" class="mcta-btn mcta-book">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2H16C19.3 2 22 4.7 22 8V16C22 19.3 19.3 22 16 22H8C4.7 22 2 19.3 2 16V8C2 4.7 4.7 2 8 2Z"/><circle cx="12" cy="12" r="4"/></svg>
+      Book Free Consult
+    </a>
+    <a href="tel:8086733513" class="mcta-btn mcta-call">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      Call Now
+    </a>
+  </div>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Active nav links
+    const navLinks = document.querySelectorAll('.nav-links a');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' }).observe;
+
+    document.querySelectorAll('section[id]').forEach(s => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${e.target.id}`));
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' }).observe(s);
+    });
+
+    // Scroll reveal
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+      spans[1].style.opacity   = open ? '0' : '';
+      spans[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mlink, .mobile-menu-cta').forEach(l => {
+      l.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Gallery carousel arrows
+    const galleryGrid = document.querySelector('.gallery-grid');
+    const itemWidth = () => galleryGrid.querySelector('.gallery-item').offsetWidth + 10;
+    document.getElementById('gallery-prev').addEventListener('click', () => {
+      galleryGrid.scrollBy({ left: -itemWidth(), behavior: 'smooth' });
+    });
+    document.getElementById('gallery-next').addEventListener('click', () => {
+      galleryGrid.scrollBy({ left: itemWidth(), behavior: 'smooth' });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - nav.offsetHeight, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
